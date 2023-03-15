@@ -1,6 +1,6 @@
 Disable Windows Services
 
-• This PowerShell script can be used to stop and disable Windows services on your local machine. Follow the below instructions to run this script.
+• This PowerShell script can be used to stop and disable Windows services on your local machine. Follow the below instructions to run this script.  
 • Open Windows PowerShell as an administrator. To do this, right-click on the start menu icon and select "Windows PowerShell (Admin)" from the context menu.
 • Copy the entire code block below and paste it into the PowerShell window.
 • Modify the list of services by adding or removing service names in double quotes, separated by commas.
