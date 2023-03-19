@@ -1,6 +1,10 @@
-#Run the below in Windows PowerShell (Admin) [ Right click on start menu icon and open this ]
-#An excel will be created in your desktop
-#Now get the service name list which you want to disable and change it into comma separated values with service names in double quotes
+# To run custom script in Powershell, run the below in Windows PowerShell (Admin)
+# Set-ExecutionPolicy RemoteSigned
+# You need to REVERT THE ABOVE FOR SECURITY REASONS (instruction in the end of script)
+# Run the below in Windows PowerShell (Admin) [ Right click on start menu icon and open this ]
+# An excel will be created in your desktop
+# Now get the service name list which you want to disable and change it into comma separated values with service names in double quotes
+
 
 Add-Type -AssemblyName System.Windows.Forms
 $services = Get-Service | Select-Object -Property Name, DisplayName, Description, Status, StartType
@@ -28,3 +32,6 @@ $workbook.SaveAs($filename)
 $workbook.Close()
 $excel.Quit()
 [System.Windows.Forms.MessageBox]::Show("The file has been generated and saved to your desktop.", "File Generated", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+
+# You need to REVERT THE EXECUTION POLICY FOR SECURITY REASONS
+# Set-ExecutionPolicy Restricted
