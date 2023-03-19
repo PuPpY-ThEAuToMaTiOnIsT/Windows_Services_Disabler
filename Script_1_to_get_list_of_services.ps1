@@ -1,12 +1,11 @@
-# To run custom script in Powershell, run the below in Windows PowerShell (Admin)
-# Set-ExecutionPolicy RemoteSigned
-# You need to REVERT THE ABOVE FOR SECURITY REASONS (instruction in the end of script)
 # Run the below in Windows PowerShell (Admin) [ Right click on start menu icon and open this ]
 # An excel will be created in your desktop
 # Now get the service name list which you want to disable and change it into comma separated values with service names in double quotes
 
 
+Set-ExecutionPolicy RemoteSigned -Force
 Add-Type -AssemblyName System.Windows.Forms
+$desktopPath = [Environment]::GetFolderPath('Desktop')
 $services = Get-Service | Select-Object -Property Name, DisplayName, Description, Status, StartType
 $excel = New-Object -ComObject Excel.Application
 $workbook = $excel.Workbooks.Add()
@@ -32,6 +31,5 @@ $workbook.SaveAs($filename)
 $workbook.Close()
 $excel.Quit()
 [System.Windows.Forms.MessageBox]::Show("The file has been generated and saved to your desktop.", "File Generated", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Information)
+Set-ExecutionPolicy Restricted -Force
 
-# You need to REVERT THE EXECUTION POLICY FOR SECURITY REASONS
-# Set-ExecutionPolicy Restricted
