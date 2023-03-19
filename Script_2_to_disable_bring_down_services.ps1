@@ -1,15 +1,13 @@
-# To run custom script in Powershell, run the below in Windows PowerShell (Admin)
-# Set-ExecutionPolicy RemoteSigned
-# You need to REVERT THE ABOVE FOR SECURITY REASONS (instruction in the end of script)
-# Run the below in Windows PowerShell (Admin) [ Right click on start menu icon and open this ]
-# Provide the list in the below program to stop and disable the services
-# Example:
-# $services = @(
-# "SysMain",
-# "wscsvc",
-# "DiagTrack"
-# )
+#Run the below in Windows PowerShell (Admin) [ Right click on start menu icon and open this ]
+#Provide the list in the below program to stop and disable the services
+#Example:
+#$services = @(
+#"SysMain",
+#"wscsvc",
+#"DiagTrack"
+#)
 
+Set-ExecutionPolicy RemoteSigned -Force
 $services = @(
 #the array of services which you want to disable, change it into comma separated values 
 #with service names in double quotes and place it here
@@ -35,6 +33,5 @@ foreach ($serviceName in $services) {
         Write-Host "Service $serviceName does not exist."
     }
 }
+Set-ExecutionPolicy Restricted -Force
 
-# You need to REVERT THE EXECUTION POLICY FOR SECURITY REASONS
-# Set-ExecutionPolicy Restricted
